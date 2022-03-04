@@ -61,7 +61,7 @@ typedef void (^SVGKImageAsynchronousLoadingDelegate)(SVGKImage* loadedImage, SVG
  
  NB you can get MUCH BETTER performance using the methods such as exportUIImageAntiAliased and exportNSDataAntiAliased
  */
-@property (weak, nonatomic, readonly) UIImage* UIImage;
+@property (weak, nonatomic, readonly, nullable) UIImage* UIImage;
 
 @property (nonatomic, strong, readonly) SVGKSource* source;
 @property (nonatomic, strong, readonly) SVGKParseResult* parseErrorsAndWarnings;
@@ -140,7 +140,7 @@ typedef void (^SVGKImageAsynchronousLoadingDelegate)(SVGKImage* loadedImage, SVG
 +(SVGKParser *) imageWithSource:(SVGKSource *)source onCompletion:(SVGKImageAsynchronousLoadingDelegate)blockCompleted;
 
 - (id)initWithContentsOfFile:(NSString *)path;
-- (id)initWithData:(NSData *)data;
+- (nullable id)initWithData:(NSData *)data;
 
 #pragma mark - UIImage methods cloned and re-implemented as SVG intelligent methods
 
