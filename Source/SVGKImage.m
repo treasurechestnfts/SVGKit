@@ -357,8 +357,8 @@ static NSMutableDictionary* globalSVGKImageCache;
     @try {
         return [self initWithSource:[SVGKSourceNSData sourceFromData:data URLForRelativeLinks:nil]];
     } @catch (NSException *exception) {
-        NSLog(exception)
-        return nil
+        NSLog(exception);
+        return nil;
     }
 }
 
