@@ -354,8 +354,12 @@ static NSMutableDictionary* globalSVGKImageCache;
 	NSParameterAssert(data != nil);
 	
 	SVGKitLogWarn(@"Creating an SVG from raw data; this is not recommended: SVG requires knowledge of at least the URL where it came from (as it can contain relative file-links internally). You should use the method [SVGKImage initWithSource:] instead and specify an SVGKSource with more detail" );
-	
-	return [self initWithSource:[SVGKSourceNSData sourceFromData:data URLForRelativeLinks:nil]];
+    @try {
+        return [self initWithSource:[SVGKSourceNSData sourceFromData:data URLForRelativeLinks:nil]];
+    } @catch (NSException *exception) {
+        NSLog(exception)
+        return nil
+    }
 }
 
 - (void)dealloc
